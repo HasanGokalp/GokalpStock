@@ -23,6 +23,7 @@ namespace GokalpStock.Application.Concrete.Service
             _mapper = mapper;
             _mailService = mailService;
         }
+        
 
         public Result<bool> CreateAccount(CreateAccountRM account)
         {
