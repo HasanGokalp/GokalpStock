@@ -3,6 +3,7 @@ using GokalpStock.Application.Abstract.Service;
 using GokalpStock.Application.Concrete.Models.Dtos;
 using GokalpStock.Application.Concrete.Models.RequestModels.Products;
 using GokalpStock.Application.Concrete.Wrapper;
+using GokalpStock.Domain.Concrete;
 using GokalpStock.Persistence.Abstract.UnitWork;
 using System.Linq.Expressions;
 
@@ -21,12 +22,27 @@ namespace GokalpStock.Application.Concrete.Service
 
         public Result<bool> CreateProduct(CreateProductRM createProductsRM)
         {
-            throw new NotImplementedException();
+            var result = new Result<bool>();
+            var mappedEntity = _mapper.Map<CreateProductRM, Product>(createProductsRM);
+            _unitWork.ProductRepository.Insert(mappedEntity);
+            if(mappedEntity != null)
+            {
+                result.Data = true;
+            }
+            return result;
+
         }
 
         public Result<bool> DeleteProduct(DeleteProductRM deleteProductRM)
         {
-            throw new NotImplementedException();
+            var result = new Result<bool>();
+            var mappedEntity = _mapper.Map<DeleteProductRM, Product>(deleteProductRM);
+            _unitWork.ProductRepository.Delete(mappedEntity);
+            if(mappedEntity != null)
+            {
+                result.Data = true;
+            }
+            return result;
         }
 
         public Task<List<ProductDto>> GetAllProduct()
