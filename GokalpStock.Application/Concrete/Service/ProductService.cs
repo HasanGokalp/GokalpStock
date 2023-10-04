@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GokalpStock.Application.Abstract.Service;
 using GokalpStock.Application.Concrete.Models.Dtos;
+using GokalpStock.Application.Concrete.Models.RequestModels.Billings;
 using GokalpStock.Application.Concrete.Models.RequestModels.Products;
 using GokalpStock.Application.Concrete.Wrapper;
 using GokalpStock.Domain.Concrete;
@@ -64,7 +65,20 @@ namespace GokalpStock.Application.Concrete.Service
 
         public Result<bool> UpdateProduct(UpdateProductRM updateProductRM)
         {
-            throw new NotImplementedException();
+            var result = new Result<bool>();
+            //Önce girilen id ye göre doğrulama
+            var tempEntity = _unitWork.AccountRepository.GetByFilter(x => x.Name == updateProductRM.ProductName);
+            if (tempEntity != null)
+            {
+                var tempMappedEntity = _mapper.Map<UpdateProductRM, Product>(updateProductRM);
+                var entity = _unitWork.AccountRepository.GetById(tempMappedEntity.Id);
+                if (entity != null)
+                {
+                    result.Succsess = true;
+                }
+            }
+            else { result.Succsess = false; throw new Exception("Bu isimde bir ürün bulunamadı"); }
+            return result;
         }
     }
 }
