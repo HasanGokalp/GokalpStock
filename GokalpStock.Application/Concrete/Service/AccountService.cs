@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GokalpStock.Application.Abstract.Service;
 using GokalpStock.Application.Concrete.Models.Dtos;
+using GokalpStock.Application.Concrete.Models.EMail;
 using GokalpStock.Application.Concrete.Models.RequestModels.Accounts;
 using GokalpStock.Application.Concrete.Validations.Accounts;
 using GokalpStock.Application.Concrete.Wrapper;
@@ -14,11 +15,13 @@ namespace GokalpStock.Application.Concrete.Service
     {
         private readonly IMapper _mapper;
         private readonly IUnitWork _unitWork;
+        private readonly IMailService _mailService;
 
-        public AccountService(IUnitWork unitWork, IMapper mapper)
+        public AccountService(IUnitWork unitWork, IMapper mapper, IMailService mailService)
         {
             _unitWork = unitWork;
             _mapper = mapper;
+            _mailService = mailService;
         }
 
         public Result<bool> CreateAccount(CreateAccountRM account)
@@ -88,7 +91,13 @@ namespace GokalpStock.Application.Concrete.Service
                 result.Succsess = true;
                 var mappedEntity = _mapper.Map<LoginAccountRM, Account>(loginAccount);
                 var modifiedMappedEntity = _mapper.Map<Account, AccountDto>(mappedEntity);
-                result.Data = modifiedMappedEntity;             
+                result.Data = modifiedMappedEntity;
+                _mailService.SendEmailAsync(new MailRequest()
+                {
+                    Body = "Hesabınıza giriş işlemi yapıldı.",
+                    Subject = "Uyarı",
+                    ToEmail = modifiedMappedEntity.Email
+                });
             }
             return Task.FromResult(result);
         }
@@ -104,6 +113,12 @@ namespace GokalpStock.Application.Concrete.Service
                var entity = _unitWork.AccountRepository.GetById(tempMappedEntity.Id);
                 if (entity != null)
                 {
+                    _mailService.SendEmailAsync(new MailRequest()
+                    {
+                        Body = "Hesabınızın bilgileri değiştirildi.",
+                        Subject = "Uyarı",
+                        ToEmail = entity.Email
+                    });
                     result.Succsess = true;
                 }
             }
