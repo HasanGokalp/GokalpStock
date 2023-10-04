@@ -6,6 +6,7 @@ using GokalpStock.Application.Concrete.Validations.Accounts;
 using GokalpStock.Application.Concrete.Wrapper;
 using GokalpStock.Domain.Concrete;
 using GokalpStock.Persistence.Abstract.UnitWork;
+using System.Linq.Expressions;
 
 namespace GokalpStock.Application.Concrete.Service
 {
@@ -59,6 +60,11 @@ namespace GokalpStock.Application.Concrete.Service
                 result.Data = convertedEntities.ToList();
             }
             return result;
+        }
+
+        public Task<List<BillingDto>> GetByFilter(Expression<Func<AccountDto>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Result<AccountDto>> GetById(int id)
