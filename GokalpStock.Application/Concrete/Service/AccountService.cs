@@ -62,7 +62,7 @@ namespace GokalpStock.Application.Concrete.Service
             return result;
         }
 
-        public Task<List<BillingDto>> GetByFilter(Expression<Func<AccountDto>> filter = null)
+        public Task<Result<List<BillingDto>>> GetByFilter(Expression<Func<AccountDto>> filter = null)
         {
             throw new NotImplementedException();
         }

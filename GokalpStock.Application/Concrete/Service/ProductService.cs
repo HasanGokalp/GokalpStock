@@ -45,9 +45,16 @@ namespace GokalpStock.Application.Concrete.Service
             return result;
         }
 
-        public Task<Result<List<ProductDto>>> GetAllProduct()
+        public async Task<Result<List<ProductDto>>> GetAllProduct()
         {
-            throw new NotImplementedException();
+            var result = new Result<List<ProductDto>>();
+            var entities = await _unitWork.ProductRepository.GetAllAsync();
+            var mappedEntity = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductDto>>(entities);
+            if(mappedEntity != null)
+            {
+                result.Data = mappedEntity.ToList();
+            }
+            return result;
         }
 
         public Task<Result<List<ProductDto>>> GetByFilter(Expression<Func<ProductDto>> filter = null)
