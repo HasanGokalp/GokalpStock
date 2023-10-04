@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using GokalpStock.Application.Abstract.Service;
 using GokalpStock.Application.Concrete.Models.Dtos;
-using GokalpStock.Application.Concrete.Models.RequestModels.Accounts;
 using GokalpStock.Application.Concrete.Models.RequestModels.Billings;
 using GokalpStock.Application.Concrete.Wrapper;
 using GokalpStock.Domain.Concrete;
