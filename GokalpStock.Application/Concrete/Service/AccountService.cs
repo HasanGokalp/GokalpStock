@@ -6,7 +6,6 @@ using GokalpStock.Application.Concrete.Validations.Accounts;
 using GokalpStock.Application.Concrete.Wrapper;
 using GokalpStock.Domain.Concrete;
 using GokalpStock.Persistence.Abstract.UnitWork;
-using System.Linq.Expressions;
 
 namespace GokalpStock.Application.Concrete.Service
 {
@@ -76,12 +75,31 @@ namespace GokalpStock.Application.Concrete.Service
 
         public Task<Result<bool>> Login(LoginAccountRM loginAccount)
         {
-            throw new NotImplementedException();
+            var result = new Result<bool>();
+            var entity = _unitWork.AccountRepository.GetByFilter(x => x.UserName == loginAccount.UserName && x.Password == loginAccount.Password); // T ^ T = T veya T ^ F = F 
+            if (entity != null)
+            {
+                result.Succsess = true;
+            }
+            return Task.FromResult(result);
         }
 
         public Result<bool> UpdateAccount(UpdateAccountRM account)
         {
-            throw new NotImplementedException();
+            var result = new Result<bool>();
+            //Önce girilen id ye göre doğrulama
+            var tempEntity = _unitWork.AccountRepository.GetByFilter(x => x.Name == account.Name);
+            if (tempEntity != null)
+            {
+               var tempMappedEntity = _mapper.Map<UpdateAccountRM, Account>(account);
+               var entity = _unitWork.AccountRepository.GetById(tempMappedEntity.Id);
+                if (entity != null)
+                {
+                    result.Succsess = true;
+                }
+            }
+            else { result.Succsess = false; throw new Exception("Bu isimde bir Kullanıcı bulunamadı"); }
+            return result;
         }
     }
 }
