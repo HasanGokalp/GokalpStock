@@ -10,7 +10,7 @@ namespace GokalpStock.Application.Abstract.Service
         Result<bool> CreateBilling(CreateBillingsRM createBillingsRM);
         Result<bool> UpdateBilling(UpdateBillingRM updateBillingRM);
         Result<bool> DeleteBilling(DeleteBillingRM deleteBillingRM);
-        Task<List<BillingDto>> GetAllBilling();
-        Task<List<BillingDto>> GetByFilter(Expression<Func<BillingDto>> filter = null);
+        Task<Result<List<BillingDto>>> GetAllBilling();
+        Task<Result<List<BillingDto>>> GetByFilter(Expression<Func<BillingDto>> filter = null);
     }
 }

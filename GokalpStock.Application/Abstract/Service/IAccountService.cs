@@ -13,6 +13,6 @@ namespace GokalpStock.Application.Abstract.Service
         Result<bool> DeleteAccount(DeleteAccountRM account);
         Task<Result<AccountDto>> GetById(int id);
         Task<Result<AccountDto>> Login(LoginAccountRM loginAccount);
-        Task<List<BillingDto>> GetByFilter(Expression<Func<AccountDto>> filter = null);
+        Task<Result<List<BillingDto>>> GetByFilter(Expression<Func<AccountDto>> filter = null);
     }
 }

@@ -45,12 +45,12 @@ namespace GokalpStock.Application.Concrete.Service
             return result;
         }
 
-        public Task<List<ProductDto>> GetAllProduct()
+        public Task<Result<List<ProductDto>>> GetAllProduct()
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<ProductDto>> GetByFilter(Expression<Func<ProductDto>> filter = null)
+        public Task<Result<List<ProductDto>>> GetByFilter(Expression<Func<ProductDto>> filter = null)
         {
             throw new NotImplementedException();
         }

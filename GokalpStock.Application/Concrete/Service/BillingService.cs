@@ -29,12 +29,12 @@ namespace GokalpStock.Application.Concrete.Service
             throw new NotImplementedException();
         }
 
-        public Task<List<BillingDto>> GetAllBilling()
+        public Task<Result<List<BillingDto>>> GetAllBilling()
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<BillingDto>> GetByFilter(Expression<Func<BillingDto>> filter = null)
+        public Task<Result<List<BillingDto>>> GetByFilter(Expression<Func<BillingDto>> filter = null)
         {
             throw new NotImplementedException();
         }
