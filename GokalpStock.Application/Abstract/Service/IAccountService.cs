@@ -1,7 +1,6 @@
 ﻿using GokalpStock.Application.Concrete.Models.Dtos;
 using GokalpStock.Application.Concrete.Models.RequestModels.Accounts;
 using GokalpStock.Application.Concrete.Wrapper;
-using System.Linq.Expressions;
 
 namespace GokalpStock.Application.Abstract.Service
 {
