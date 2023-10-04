@@ -12,6 +12,6 @@ namespace GokalpStock.Application.Abstract.Service
         Result<bool> UpdateAccount(UpdateAccountRM account);
         Result<bool> DeleteAccount(DeleteAccountRM account);
         Task<Result<AccountDto>> GetById(int id);
-        Task<Result<bool>> Login(LoginAccountRM loginAccount);
+        Task<Result<AccountDto>> Login(LoginAccountRM loginAccount);
     }
 }

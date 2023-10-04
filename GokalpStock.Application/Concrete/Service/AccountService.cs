@@ -73,13 +73,16 @@ namespace GokalpStock.Application.Concrete.Service
             return result;
         }
 
-        public Task<Result<bool>> Login(LoginAccountRM loginAccount)
+        public Task<Result<AccountDto>> Login(LoginAccountRM loginAccount)
         {
-            var result = new Result<bool>();
+            var result = new Result<AccountDto>();
             var entity = _unitWork.AccountRepository.GetByFilter(x => x.UserName == loginAccount.UserName && x.Password == loginAccount.Password); // T ^ T = T veya T ^ F = F 
             if (entity != null)
             {
                 result.Succsess = true;
+                var mappedEntity = _mapper.Map<LoginAccountRM, Account>(loginAccount);
+                var modifiedMappedEntity = _mapper.Map<Account, AccountDto>(mappedEntity);
+                result.Data = modifiedMappedEntity;             
             }
             return Task.FromResult(result);
         }
