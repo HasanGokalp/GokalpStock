@@ -1,5 +1,4 @@
-﻿using GokalpStock.Application.Abstract.Models.EMail;
-using GokalpStock.Application.Abstract.Service;
+﻿using GokalpStock.Application.Abstract.Service;
 using GokalpStock.Application.Concrete.Models.EMail;
 using MailKit.Net.Smtp;
 using MailKit.Security;
