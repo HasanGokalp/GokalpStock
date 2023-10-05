@@ -90,8 +90,9 @@ namespace GokalpStock.Application.Concrete.Service
             if (entity != null)
             {
                 result.Succsess = true;
-                var mappedEntity = _mapper.Map<LoginAccountRM, Account>(loginAccount);
-                var modifiedMappedEntity = _mapper.Map<Account, AccountDto>(mappedEntity);
+                //Burada _mapper.Map<Account, AccountDto>(entity); değil _mapper.Map<Account>(loginAccount); gibi yapıldı.
+                var mappedEntity = _mapper.Map<Account>(loginAccount);
+                var modifiedMappedEntity = _mapper.Map<AccountDto>(mappedEntity);
                 result.Data = modifiedMappedEntity;
                 //_mailService.SendEmailAsync(new MailRequest()
                 //{
