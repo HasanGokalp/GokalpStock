@@ -18,7 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<GokalpStockContext>(x =>
 {
-    x.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Stocks3;Trusted_Connection=True;TrustServerCertificate=True");
+    x.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Stocks4;Trusted_Connection=True;TrustServerCertificate=True");
 });
 builder.Services.AddScoped<IUnitWork, UnitWork>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
