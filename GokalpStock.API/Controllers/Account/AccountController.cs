@@ -1,7 +1,6 @@
 ﻿using GokalpStock.Application.Abstract.Service;
 using GokalpStock.Application.Concrete.Models.Dtos;
 using GokalpStock.Application.Concrete.Models.RequestModels.Accounts;
-using GokalpStock.Application.Concrete.Service;
 using GokalpStock.Application.Concrete.Wrapper;
 using Microsoft.AspNetCore.Mvc;
 
