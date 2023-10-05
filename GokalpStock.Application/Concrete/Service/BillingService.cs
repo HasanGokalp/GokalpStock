@@ -27,7 +27,7 @@ namespace GokalpStock.Application.Concrete.Service
             var validator = new CreateBillingsValidation();
             if (validator.Validate(createBillingsRM) != null)
             {
-                var entity = _mapper.Map<CreateBillingsRM, Billing>(createBillingsRM);
+                var entity = _mapper.Map<Billing>(createBillingsRM);
                 _unitWork.BillingRepository.Insert(entity);
                 result.Data = true;
             }
@@ -37,7 +37,7 @@ namespace GokalpStock.Application.Concrete.Service
         public Result<bool> DeleteBilling(DeleteBillingRM deleteBillingRM)
         {
             var result = new Result<bool>();
-            var mappedEntity = _mapper.Map<DeleteBillingRM, Billing>(deleteBillingRM);
+            var mappedEntity = _mapper.Map<Billing>(deleteBillingRM);
             _unitWork.BillingRepository.Delete(mappedEntity);
             if (mappedEntity != null)
             {
@@ -51,7 +51,7 @@ namespace GokalpStock.Application.Concrete.Service
         {
             var result = new Result<List<BillingDto>>();
             var entities = await _unitWork.BillingRepository.GetAllAsync();
-            var mappedEntity = _mapper.Map<IEnumerable<Billing>, IEnumerable<BillingDto>>(entities);
+            var mappedEntity = _mapper.Map<IEnumerable<BillingDto>>(entities);
             if (mappedEntity != null)
             {
                 result.Data = mappedEntity.ToList();
@@ -71,7 +71,7 @@ namespace GokalpStock.Application.Concrete.Service
             var tempEntity = _unitWork.BillingRepository.GetByFilter(x => x.AccountId == updateBillingRM.AccountId);
             if (tempEntity != null)
             {
-                var tempMappedEntity = _mapper.Map<UpdateBillingRM, Billing>(updateBillingRM);
+                var tempMappedEntity = _mapper.Map<Billing>(updateBillingRM);
                 var entity = _unitWork.BillingRepository.GetById(tempMappedEntity.Id);
                 if (entity != null)
                 {

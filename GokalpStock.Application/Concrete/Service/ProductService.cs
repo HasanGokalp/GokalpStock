@@ -23,7 +23,7 @@ namespace GokalpStock.Application.Concrete.Service
         public Result<bool> CreateProduct(CreateProductRM createProductsRM)
         {
             var result = new Result<bool>();
-            var mappedEntity = _mapper.Map<CreateProductRM, Product>(createProductsRM);
+            var mappedEntity = _mapper.Map<Product>(createProductsRM);
             _unitWork.ProductRepository.Insert(mappedEntity);
             if(mappedEntity != null)
             {
@@ -36,7 +36,7 @@ namespace GokalpStock.Application.Concrete.Service
         public Result<bool> DeleteProduct(DeleteProductRM deleteProductRM)
         {
             var result = new Result<bool>();
-            var mappedEntity = _mapper.Map<DeleteProductRM, Product>(deleteProductRM);
+            var mappedEntity = _mapper.Map<Product>(deleteProductRM);
             _unitWork.ProductRepository.Delete(mappedEntity);
             if(mappedEntity != null)
             {
@@ -49,7 +49,7 @@ namespace GokalpStock.Application.Concrete.Service
         {
             var result = new Result<List<ProductDto>>();
             var entities = await _unitWork.ProductRepository.GetAllAsync();
-            var mappedEntity = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductDto>>(entities);
+            var mappedEntity = _mapper.Map<IEnumerable<ProductDto>>(entities);
             if(mappedEntity != null)
             {
                 result.Data = mappedEntity.ToList();
@@ -69,7 +69,7 @@ namespace GokalpStock.Application.Concrete.Service
             var tempEntity = _unitWork.AccountRepository.GetByFilter(x => x.Name == updateProductRM.ProductName);
             if (tempEntity != null)
             {
-                var tempMappedEntity = _mapper.Map<UpdateProductRM, Product>(updateProductRM);
+                var tempMappedEntity = _mapper.Map<Product>(updateProductRM);
                 var entity = _unitWork.AccountRepository.GetById(tempMappedEntity.Id);
                 if (entity != null)
                 {
