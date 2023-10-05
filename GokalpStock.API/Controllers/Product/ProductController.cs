@@ -15,9 +15,9 @@ namespace GokalpStock.API.Controllers.Product
             _homeService = homeService;
         }
         [HttpGet("GetAllProducts")]
-        public ActionResult<Result<ProductDto>> GetAllProducts()
+        public async Task<ActionResult<Result<ProductDto>>> GetAllProducts()
         {
-            var entities = _homeService.ProductService.GetAllProduct();
+            var entities = await _homeService.ProductService.GetAllProduct();
             return Ok(entities);
         }
         [HttpPost("CreateProduct")]

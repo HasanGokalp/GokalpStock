@@ -15,9 +15,9 @@ namespace GokalpStock.API.Controllers.Billing
             _homeService = homeService;
         }
         [HttpGet("GetAllBillings")]
-        public ActionResult<Result<BillingDto>> GetAllBillings()
+        public async Task<ActionResult<Result<BillingDto>>> GetAllBillings()
         {
-            var entities = _homeService.BillingService.GetAllBilling();
+            var entities = await _homeService.BillingService.GetAllBilling();
             return Ok(entities);
         }
         [HttpPost("CreateBilling")]
