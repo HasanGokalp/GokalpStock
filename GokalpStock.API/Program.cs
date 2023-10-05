@@ -22,6 +22,9 @@ builder.Services.AddDbContext<GokalpStockContext>(x =>
 });
 builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<IUnitWork, UnitWork>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IBillingService, BillingService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IBillingRepository, BillingRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
