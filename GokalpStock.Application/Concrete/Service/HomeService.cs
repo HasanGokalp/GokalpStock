@@ -10,11 +10,11 @@ namespace GokalpStock.Application.Concrete.Service
     {
         private bool disposedValue;
 
-        public IAccountService AccountService => throw new NotImplementedException();
+        public IAccountService AccountService { get; }
 
-        public IProductService ProductService => throw new NotImplementedException();
+        public IProductService ProductService {  get; }
 
-        public IBillingService BillingService => throw new NotImplementedException();
+        public IBillingService BillingService {  get; }
 
         public Task<Result<bool>> CreateAccount(CreateAccountRM createAccountRM)
         {
