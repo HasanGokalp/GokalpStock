@@ -111,7 +111,7 @@ namespace GokalpStock.Application.Concrete.Service
             var tempEntity = _unitWork.AccountRepository.GetByFilter(x => x.Name == account.Name);
             if (tempEntity != null)
             {
-               var tempMappedEntity = _mapper.Map<UpdateAccountRM, Account>(account);
+               var tempMappedEntity = _mapper.Map<Account>(account);
                var entity = _unitWork.AccountRepository.GetById(tempMappedEntity.Id);
                 if (entity != null)
                 {

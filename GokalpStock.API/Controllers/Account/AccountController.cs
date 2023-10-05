@@ -14,14 +14,14 @@ namespace GokalpStock.API.Controllers.Account
         {
             _homeService = homeService;
         }
-        [HttpGet("accountLogin")]
+        [HttpGet("AccountLogin")]
         public async Task<ActionResult<Result<AccountDto>>> Login(LoginAccountRM loginAccountRM)
         {
             var entity = await _homeService.AccountService.Login(loginAccountRM);
             return Ok(entity);
 
         }
-        [HttpPost("createAccount")]
+        [HttpPost("CreateAccount")]
         public ActionResult<Result<bool>> Create(CreateAccountRM createAccountRM)
         {
             var result = _homeService.AccountService.CreateAccount(createAccountRM);
@@ -32,6 +32,18 @@ namespace GokalpStock.API.Controllers.Account
         {
             var entities = await _homeService.AccountService.GetAll();
             return Ok(entities);
+        }
+        [HttpPost("UpdateAccount")]
+        public ActionResult<Result<bool>> UpdateAccount(UpdateAccountRM updateAccountRM)
+        {
+            var result = _homeService.AccountService.UpdateAccount(updateAccountRM);
+            return Ok(result);
+        }
+        [HttpPost("DeleteAccount")]
+        public ActionResult<Result<bool>> DeleteAccount(DeleteAccountRM deleteAccountRM)
+        {
+            var result = _homeService.AccountService.DeleteAccount(deleteAccountRM);
+            return Ok(result);
         }
     }
 }
