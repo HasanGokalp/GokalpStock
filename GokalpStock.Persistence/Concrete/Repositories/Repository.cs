@@ -19,6 +19,7 @@ namespace GokalpStock.Persistence.Concrete.Repositories
         public void Delete(T entity)
         {
             _dbSet.Remove(entity);
+            _context.SaveChanges();
         }
 
         public IEnumerable<T> GetAll()
@@ -56,11 +57,15 @@ namespace GokalpStock.Persistence.Concrete.Repositories
         public void Insert(T entity)
         {
             _dbSet.Add(entity);
+            _context.SaveChanges();
+
         }
 
         public void Update(T entity)
         {
             _dbSet.Update(entity);
+            _context.SaveChanges();
+
         }
     }
 }
