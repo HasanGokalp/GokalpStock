@@ -5,10 +5,10 @@ namespace GokalpStock.API.Controllers.Product
 {
     public class ProductController : Controller
     {
-        private readonly IHomeService _homeservice;
+        private readonly IHomeService _homeService;
         public ProductController(IHomeService homeService)
         {
-            _homeservice = homeService;
+            _homeService = homeService;
         }
         public IActionResult Index()
         {
