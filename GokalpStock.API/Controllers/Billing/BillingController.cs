@@ -3,7 +3,6 @@ using GokalpStock.Application.Concrete.Models.Dtos;
 using GokalpStock.Application.Concrete.Models.RequestModels.Billings;
 using GokalpStock.Application.Concrete.Wrapper;
 using Microsoft.AspNetCore.Mvc;
-using Org.BouncyCastle.Crypto.Prng.Drbg;
 
 namespace GokalpStock.API.Controllers.Billing
 {
