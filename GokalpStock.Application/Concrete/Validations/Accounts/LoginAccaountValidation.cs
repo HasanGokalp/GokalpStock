@@ -9,7 +9,6 @@ namespace GokalpStock.Application.Concrete.Validations.Accounts
         {
             RuleFor(x => x.Password).NotEmpty().WithMessage("Şifre boş olamaz");
             RuleFor(x => x.UserName).NotEmpty().WithMessage("Kullanıcı adı boş olamaz");
-
         }
     }
 }
