@@ -28,5 +28,11 @@ namespace GokalpStock.API.Controllers.Account
             var result = _homeService.AccountService.CreateAccount(createAccountRM);
             return Ok(result);
         }
+        [HttpGet("GetAllAccount")]
+        public async Task<ActionResult<Result<List<AccountDto>>>> GetAllAcount() 
+        {
+            var entities = await _homeService.AccountService.GetAll();
+            return Ok(entities);
+        }
     }
 }
