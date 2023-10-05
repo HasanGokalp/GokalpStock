@@ -3,7 +3,6 @@ using GokalpStock.Application.Concrete.Models.Dtos;
 using GokalpStock.Application.Concrete.Models.RequestModels.Accounts;
 using GokalpStock.Application.Concrete.Models.RequestModels.Products;
 using GokalpStock.Application.Concrete.Wrapper;
-using System.Xml;
 
 namespace GokalpStock.Application.Concrete.Service
 {
