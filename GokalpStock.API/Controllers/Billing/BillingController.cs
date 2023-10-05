@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GokalpStock.API.Controllers.Billing
 {
+    [ApiController]
     [Route("Billing")]
     public class BillingController : Controller
     {

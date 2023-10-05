@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GokalpStock.API.Controllers.Product
 {
+    [ApiController]
     [Route("Product")]
     public class ProductController : Controller
     {
