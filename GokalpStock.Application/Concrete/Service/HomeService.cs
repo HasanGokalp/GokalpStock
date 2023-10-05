@@ -3,6 +3,7 @@ using GokalpStock.Application.Concrete.Models.Dtos;
 using GokalpStock.Application.Concrete.Models.RequestModels.Accounts;
 using GokalpStock.Application.Concrete.Models.RequestModels.Products;
 using GokalpStock.Application.Concrete.Wrapper;
+using System.Xml;
 
 namespace GokalpStock.Application.Concrete.Service
 {
@@ -15,6 +16,13 @@ namespace GokalpStock.Application.Concrete.Service
         public IProductService ProductService {  get; }
 
         public IBillingService BillingService {  get; }
+
+        public HomeService(IAccountService accountService, IProductService productService, IBillingService billingService)
+        {
+            AccountService = accountService;
+            ProductService = productService;
+            BillingService = billingService;
+        }
 
         public Task<Result<bool>> CreateAccount(CreateAccountRM createAccountRM)
         {
