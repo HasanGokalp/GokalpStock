@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Billing\" />
     <Folder Include="Controllers\Home\" />
     <Folder Include="Controllers\Product\" />
   </ItemGroup>
