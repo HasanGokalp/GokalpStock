@@ -20,6 +20,7 @@ builder.Services.AddDbContext<GokalpStockContext>(x =>
 {
     x.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Stocks4;Trusted_Connection=True;TrustServerCertificate=True");
 });
+builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<IUnitWork, UnitWork>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IBillingRepository, BillingRepository>();

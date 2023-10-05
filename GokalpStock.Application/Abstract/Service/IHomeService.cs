@@ -5,7 +5,7 @@ using GokalpStock.Application.Concrete.Wrapper;
 
 namespace GokalpStock.Application.Abstract.Service
 {
-    public interface IHomeService
+    public interface IHomeService : IDisposable
     {
         #region Services
         IAccountService AccountService { get; }
