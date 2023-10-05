@@ -93,12 +93,12 @@ namespace GokalpStock.Application.Concrete.Service
                 var mappedEntity = _mapper.Map<LoginAccountRM, Account>(loginAccount);
                 var modifiedMappedEntity = _mapper.Map<Account, AccountDto>(mappedEntity);
                 result.Data = modifiedMappedEntity;
-                _mailService.SendEmailAsync(new MailRequest()
-                {
-                    Body = "Hesabınıza giriş işlemi yapıldı.",
-                    Subject = "Uyarı",
-                    ToEmail = modifiedMappedEntity.Email
-                });
+                //_mailService.SendEmailAsync(new MailRequest()
+                //{
+                //    Body = "Hesabınıza giriş işlemi yapıldı.",
+                //    Subject = "Uyarı",
+                //    ToEmail = modifiedMappedEntity.Email
+                //});
             }
             return Task.FromResult(result);
         }
@@ -114,12 +114,12 @@ namespace GokalpStock.Application.Concrete.Service
                var entity = _unitWork.AccountRepository.GetById(tempMappedEntity.Id);
                 if (entity != null)
                 {
-                    _mailService.SendEmailAsync(new MailRequest()
-                    {
-                        Body = "Hesabınızın bilgileri değiştirildi.",
-                        Subject = "Uyarı",
-                        ToEmail = entity.Email
-                    });
+                    //_mailService.SendEmailAsync(new MailRequest()
+                    //{
+                    //    Body = "Hesabınızın bilgileri değiştirildi.",
+                    //    Subject = "Uyarı",
+                    //    ToEmail = entity.Email
+                    //});
                     result.Succsess = true;
                 }
             }
