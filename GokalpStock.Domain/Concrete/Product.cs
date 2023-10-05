@@ -6,8 +6,8 @@ namespace GokalpStock.Domain.Concrete
     {
         public int BillingId { get; set; }
         public int AccountId { get; set; }
-        public Account Account { get; set; }
-        public Billing Billing { get; set; }
+        public Account? Account { get; set; }
+        public Billing? Billing { get; set; }
         public string ProductName { get; set; }
         public int Price { get; set; }
         public int InStock { get; set; }
