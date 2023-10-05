@@ -1,4 +1,5 @@
 using GokalpStock.Application.Abstract.Service;
+using GokalpStock.Application.Concrete.Mappers;
 using GokalpStock.Application.Concrete.Models.EMail;
 using GokalpStock.Application.Concrete.Service;
 using GokalpStock.Persistence.Abstract.Repository;
@@ -30,7 +31,7 @@ builder.Services.AddScoped<IBillingRepository, BillingRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 builder.Services.AddTransient<IMailService, MailService>();
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
