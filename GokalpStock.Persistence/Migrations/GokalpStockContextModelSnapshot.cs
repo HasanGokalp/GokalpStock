@@ -35,12 +35,10 @@ namespace GokalpStock.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("CreateDate")
-                        .IsRequired()
                         .HasColumnType("datetime2")
                         .HasColumnName("CREATE_DATE");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("CREATED_BY");
 
@@ -57,12 +55,10 @@ namespace GokalpStock.Persistence.Migrations
                         .HasDefaultValueSql("0");
 
                     b.Property<string>("ModifiedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("MODIFIED_BY");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .IsRequired()
                         .HasColumnType("datetime2")
                         .HasColumnName("MODIFIED_DATE");
 
@@ -100,17 +96,14 @@ namespace GokalpStock.Persistence.Migrations
                         .HasColumnName("ACCOUNT_ID");
 
                     b.Property<DateTime?>("CreateDate")
-                        .IsRequired()
                         .HasColumnType("datetime2")
                         .HasColumnName("CREATE_DATE");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("CREATED_BY");
 
                     b.Property<bool?>("IsDeleted")
-                        .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasColumnName("IS_DELETED")
@@ -123,12 +116,10 @@ namespace GokalpStock.Persistence.Migrations
                         .HasDefaultValueSql("0");
 
                     b.Property<string>("ModifiedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("MODIFIED_BY");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .IsRequired()
                         .HasColumnType("datetime2")
                         .HasColumnName("MODIFIED_DATE");
 
@@ -164,7 +155,6 @@ namespace GokalpStock.Persistence.Migrations
                         .HasColumnName("BILLING_ID");
 
                     b.Property<DateTime?>("CreateDate")
-                        .IsRequired()
                         .HasColumnType("datetime2")
                         .HasColumnName("CREATE_DATE");
 
@@ -178,7 +168,6 @@ namespace GokalpStock.Persistence.Migrations
                         .HasColumnName("IN_STOCK");
 
                     b.Property<bool?>("IsDeleted")
-                        .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasColumnName("IS_DELETED")
@@ -190,7 +179,6 @@ namespace GokalpStock.Persistence.Migrations
                         .HasColumnName("MODIFIED_BY");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .IsRequired()
                         .HasColumnType("datetime2")
                         .HasColumnName("MODIFIED_DATE");
 

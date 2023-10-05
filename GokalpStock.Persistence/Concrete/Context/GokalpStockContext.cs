@@ -15,11 +15,11 @@ namespace GokalpStock.Persistence.Concrete.Context
         {
             Database.EnsureCreated();
         }
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    base.OnConfiguring(optionsBuilder);
-        //    optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Stocks3;Trusted_Connection=True;TrustServerCertificate=True");
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Stocks6;Trusted_Connection=True;TrustServerCertificate=True");
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);

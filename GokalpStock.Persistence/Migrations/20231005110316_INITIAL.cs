@@ -23,10 +23,10 @@ namespace GokalpStock.Persistence.Migrations
                     EMAIL = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     Authority = table.Column<int>(type: "int", nullable: false),
                     IS_DELETED = table.Column<bool>(type: "bit", nullable: false, defaultValueSql: "0"),
-                    CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,11 +43,11 @@ namespace GokalpStock.Persistence.Migrations
                     PRODUCT_ID = table.Column<int>(type: "int", nullable: false),
                     IS_IT_COMFIRM = table.Column<bool>(type: "bit", nullable: false, defaultValueSql: "0"),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    IS_DELETED = table.Column<bool>(type: "bit", nullable: false, defaultValueSql: "0"),
-                    CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0"),
+                    CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -70,9 +70,9 @@ namespace GokalpStock.Persistence.Migrations
                     PRODUCT_NAME = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PRICE = table.Column<int>(type: "int", nullable: false),
                     IN_STOCK = table.Column<int>(type: "int", nullable: false),
-                    IS_DELETED = table.Column<bool>(type: "bit", nullable: false, defaultValueSql: "0"),
-                    CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0"),
+                    CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CREATED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },

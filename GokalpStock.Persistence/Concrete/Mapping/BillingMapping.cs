@@ -17,7 +17,7 @@ namespace GokalpStock.Persistence.Concrete.Mapping
                 .HasColumnName("ACCOUNT_ID");
 
             builder.Property(x => x.IsDeleted)
-                .IsRequired()
+                
                 .HasColumnName("IS_DELETED")
                 .HasDefaultValueSql("0");
 
@@ -30,19 +30,21 @@ namespace GokalpStock.Persistence.Concrete.Mapping
                 .HasColumnName("ID");
 
             builder.Property(x => x.CreateDate)
-                .IsRequired()
+                
                 .HasColumnName("CREATE_DATE");
 
             builder.Property(x => x.CreatedBy)
-                .IsRequired()
+                .IsRequired(false)
+
                 .HasColumnName("CREATED_BY");
 
             builder.Property(x => x.ModifiedBy)
-                .IsRequired()
+                .IsRequired(false)
+
                 .HasColumnName("MODIFIED_BY");
 
             builder.Property(x => x.ModifiedDate)
-                .IsRequired()
+                
                 .HasColumnName("MODIFIED_DATE");
 
             builder.HasOne(x => x.Account)
