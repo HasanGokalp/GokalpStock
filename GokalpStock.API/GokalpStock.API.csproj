@@ -22,4 +22,10 @@
     <ProjectReference Include="..\GokalpStock.Persistence\GokalpStock.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Billing\" />
+    <Folder Include="Controllers\Home\" />
+    <Folder Include="Controllers\Product\" />
+  </ItemGroup>
+
 </Project>
