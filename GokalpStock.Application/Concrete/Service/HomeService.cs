@@ -3,7 +3,6 @@ using GokalpStock.Application.Concrete.Models.Dtos;
 using GokalpStock.Application.Concrete.Models.RequestModels.Accounts;
 using GokalpStock.Application.Concrete.Models.RequestModels.Products;
 using GokalpStock.Application.Concrete.Wrapper;
-using GokalpStock.Domain.Concrete;
 
 namespace GokalpStock.Application.Concrete.Service
 {
@@ -151,6 +150,11 @@ namespace GokalpStock.Application.Concrete.Service
             else { result.Data = 0.0; }
     
             return result;
+        }
+
+        public Result<double> DepartmentsWithTheMostOrders()
+        {
+            throw new NotImplementedException();
         }
     }
 }

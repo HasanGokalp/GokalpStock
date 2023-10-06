@@ -40,8 +40,10 @@ namespace GokalpStock.Application.Abstract.Service
 
         #region Ürünler hakkında arama,filtreleme ve istatistik bilgileri
         Result<double> GetByFilterPopularity(string primary, string secondry);
+        Result<double> DepartmentsWithTheMostOrders();
 
         #endregion
+
         #region Maliyet için matematiksel formüller
         Result<double> EconomicOrderQuantity(double K, double D, double G);
         #endregion

@@ -45,5 +45,11 @@ namespace GokalpStock.API.Controllers.Product
             var result = _homeService.GetByFilterPopularity(first, second);
             return Ok(result);
         }
+        [HttpGet("EconomicOrderQuantity")]
+        public ActionResult<Result<double>> EconomicOrderQuantity(double K, double D, double G)
+        {
+            var result = _homeService.EconomicOrderQuantity(K, D, G);
+            return Ok(result);
+        }
     }
 }
