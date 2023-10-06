@@ -47,5 +47,15 @@ namespace GokalpStock.Application.Abstract.Service
         #region Maliyet için matematiksel formüller
         Result<double> EconomicOrderQuantity(double K, double D, double G);
         #endregion
+
+        #region Aşamalar için istatistik
+
+
+        #endregion
+
+        #region Yöneticiler için genel istatistikler
+
+
+        #endregion
     }
 }
