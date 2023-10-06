@@ -39,5 +39,11 @@ namespace GokalpStock.API.Controllers.Product
             var result = _homeService.ProductService.UpdateProduct(updateProductRM);
             return Ok(result);
         }
+        [HttpGet("ProductsStatisticsPreferenceRate")]
+        public ActionResult<Result<double>> GetProductPreferenceRate(string first, string second)
+        {
+            var result = _homeService.GetByFilterPopularity(first, second);
+            return Ok(result);
+        }
     }
 }

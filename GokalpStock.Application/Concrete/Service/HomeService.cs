@@ -116,12 +116,20 @@ namespace GokalpStock.Application.Concrete.Service
         {
             var result = new Result<double>();
             var allEntity = ProductService.GetAllProduct();
+            //Böl ve fethet
             var first = allEntity.Result.Data.Where(x => x.ProductName.ToLower().Contains(primary.ToLower()));
             var countFirst = first.Count();
             var second = allEntity.Result.Data.Where(x => x.ProductName.ToLower().Contains(secondry.ToLower()));
             var countSecond = first.Count();
-            double ratio = countSecond / countFirst;
-            result.Data = ratio;
+            if(countFirst != 0 && countSecond != 0)
+            {
+                double ratio = countSecond / countFirst;
+                result.Data = ratio;
+            }
+            else
+            {
+                result.Data = 0.0;
+            }
             return result;
 
         }
