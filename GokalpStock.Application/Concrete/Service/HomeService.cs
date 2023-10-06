@@ -156,5 +156,25 @@ namespace GokalpStock.Application.Concrete.Service
         {
             throw new NotImplementedException();
         }
+        //Kabul edilen ürünlerin tüm ürünlerin yüzde kaçını oluşturuyor.
+        public Result<double> MostAcceptedProducts()
+        {
+            var result = new Result<double>();
+            var acceptedProducts = BillingService.GetAllBilling();
+            var mostAcceptedProd =  acceptedProducts.Result.Data.GroupBy(x => x).OrderByDescending(x => x.Count()).Select(x => x.Key).ToList();
+            var entitycount = acceptedProducts.Result.Data.Count;
+            if(entitycount == 0 && mostAcceptedProd.Count == 0)
+            {
+                var number = result.Data = mostAcceptedProd.Count / entitycount;
+                result.Data = number;
+                
+            }
+            else
+            {
+                result.Data = 0.0;
+            }
+            return result;
+
+        }
     }
 }

@@ -50,6 +50,7 @@ namespace GokalpStock.Application.Abstract.Service
 
         #region Aşamalar için istatistik
 
+        Result<double> MostAcceptedProducts();
 
         #endregion
 
