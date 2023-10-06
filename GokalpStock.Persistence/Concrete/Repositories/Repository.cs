@@ -2,6 +2,7 @@
 using GokalpStock.Persistence.Abstract.Repository;
 using GokalpStock.Persistence.Concrete.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace GokalpStock.Persistence.Concrete.Repositories

@@ -57,9 +57,12 @@ namespace GokalpStock.Application.Concrete.Service
             return result;
         }
 
-        public Task<Result<List<ProductDto>>> GetByFilter(Expression<Func<ProductDto>> filter = null)
+        public async Task<Result<List<ProductDto>>> GetByFilter(Expression<Func<ProductDto, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            var result = new Result<List<ProductDto>>();
+            //var x = _unitWork.ProductRepository.GetByFilter(filter => filter.ProductName.ToLower().Contains("ss")); //böl ve fethet bir tane daha
+            
+             throw new NotImplementedException();
         }
 
         public Result<bool> UpdateProduct(UpdateProductRM updateProductRM)

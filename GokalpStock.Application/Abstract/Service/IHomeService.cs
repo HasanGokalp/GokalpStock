@@ -12,7 +12,7 @@ namespace GokalpStock.Application.Abstract.Service
         IProductService ProductService { get; }
         IBillingService BillingService { get; }
         #endregion
-        //Sürekli çalışacak ana func, bütün bilgiler zaten account da olduğu için direk account service den çekiliyor.
+        //Sürekli çalışacak ana func, bütün bilgiler zaten account da olduğu için direkt account service den çekiliyor.
         #region Base funcs
         Task<Result<AccountDto>> GetAllInfo();
 
@@ -36,6 +36,10 @@ namespace GokalpStock.Application.Abstract.Service
         Task<Result<bool>> CreateProduct(CreateProductRM createProductRM);
         Task<Result<bool>> UpdateProduct(UpdateProductRM updateProductRM);
         Task<Result<bool>> DeleteProduct(DeleteProductRM deleteProductRM);
+        #endregion
+
+        #region Ürünler hakkında arama,filtreleme ve istatistik bilgileri
+        Result<double> GetByFilterPopularity(string primary, string secondry);
         #endregion
     }
 }

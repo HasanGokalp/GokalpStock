@@ -111,5 +111,19 @@ namespace GokalpStock.Application.Concrete.Service
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+
+        public Result<double> GetByFilterPopularity(string primary, string secondry)
+        {
+            var result = new Result<double>();
+            var allEntity = ProductService.GetAllProduct();
+            var first = allEntity.Result.Data.Where(x => x.ProductName.ToLower().Contains(primary.ToLower()));
+            var countFirst = first.Count();
+            var second = allEntity.Result.Data.Where(x => x.ProductName.ToLower().Contains(secondry.ToLower()));
+            var countSecond = first.Count();
+            double ratio = countSecond / countFirst;
+            result.Data = ratio;
+            return result;
+
+        }
     }
 }

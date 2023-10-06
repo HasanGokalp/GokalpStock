@@ -11,6 +11,7 @@ namespace GokalpStock.Application.Abstract.Service
         Result<bool> UpdateProduct(UpdateProductRM updateProductRM);
         Result<bool> DeleteProduct(DeleteProductRM deleteProductRM);
         Task<Result<List<ProductDto>>> GetAllProduct();
-        Task<Result<List<ProductDto>>> GetByFilter(Expression<Func<ProductDto>> filter = null);
+        Task<Result<List<ProductDto>>> GetByFilter(Expression<Func<ProductDto, bool>> filter = null);
+        
     }
 }
