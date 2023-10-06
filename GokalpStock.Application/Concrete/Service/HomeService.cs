@@ -3,6 +3,7 @@ using GokalpStock.Application.Concrete.Models.Dtos;
 using GokalpStock.Application.Concrete.Models.RequestModels.Accounts;
 using GokalpStock.Application.Concrete.Models.RequestModels.Products;
 using GokalpStock.Application.Concrete.Wrapper;
+using GokalpStock.Domain.Concrete;
 
 namespace GokalpStock.Application.Concrete.Service
 {
@@ -132,6 +133,24 @@ namespace GokalpStock.Application.Concrete.Service
             }
             return result;
 
+        }
+        //Ekonomik sipariş miktarı, bir tedarikçiye ne zaman ve ne miktarda sipariş verileceğini belirleyen bir lojistik kavramıdır.Kısaca EOQ formülü, ne zaman ve ne miktarda sipariş verileceğini belirler.Q = optimal order quantity
+        //K = cost of placing each order, her siparişi verme maliyeti
+        //D = annual demand quantity of the raw material / product, hammadde / ürünün yıllık talep miktarı
+        //G = cost of storing the raw material in the warehouse, hammaddenin depoda depolanması maliyeti
+        public Result<double> EconomicOrderQuantity(double K, double D, double G)
+        {
+            var result = new Result<double>();
+            var x = 2 * K * D;
+            if(x != 0 && G != 0)
+            {
+                var y = x / G;
+                var optimalOrderQuantity = Math.Sqrt(y);
+                result.Data = optimalOrderQuantity;
+            }
+            else { result.Data = 0.0; }
+    
+            return result;
         }
     }
 }
