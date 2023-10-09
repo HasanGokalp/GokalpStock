@@ -45,7 +45,7 @@ namespace GokalpStock.Application.Abstract.Service
         Result<List<ProductDto>> GetInAMonthByFilterProductName(string productName, string month);
         Result<List<ProductDto>> GetByFilterProductName(string productName);
         Result<double> DepartmentsWithTheMostOrders();
-        Result<double> MostOfferedByMonth(string month);
+        Result<BillingDto> MostOfferedByMonth(string month);
         
 
 

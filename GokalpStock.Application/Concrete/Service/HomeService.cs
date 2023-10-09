@@ -207,9 +207,17 @@ namespace GokalpStock.Application.Concrete.Service
            
         }
 
-        public Result<double> MostOfferedByMonth(string month)
+        public Result<BillingDto> MostOfferedByMonth(string month)
         {
-            throw new NotImplementedException();
+            var list = new Result<BillingDto>();
+            var dt = DateTime.ParseExact(month, "MMMM", CultureInfo.CurrentCulture).Month;
+            var entities = BillingService.GetAllBilling();
+            var filteredEntity = entities.Result.Data.Select(x => x).OrderByDescending(x => x.CreateDate).Where(x => x.CreateDate.Month == dt).FirstOrDefault();
+            if (filteredEntity != null)
+            {
+                list.Data = filteredEntity;
+            }
+            return list;
         }
 
         public Result<double> ExponentialSmoothing(double smoothingFactorOfData)

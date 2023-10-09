@@ -10,5 +10,6 @@
         public ProductDto Product { get; set; }
         public bool IsItConfirm { get; set; }
         public StatusStrDto Status { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }
