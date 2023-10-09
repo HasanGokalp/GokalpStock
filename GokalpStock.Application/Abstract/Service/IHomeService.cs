@@ -42,7 +42,7 @@ namespace GokalpStock.Application.Abstract.Service
 
         #region Ürünler hakkında arama,filtreleme ve istatistik bilgileri
         Result<double> GetByFilterPopularity(string primary, string secondry);
-        Result<ProductDto> GetInAMonthByFilterProductName(string productName, string month);
+        Result<List<ProductDto>> GetInAMonthByFilterProductName(string productName, string month);
         Result<List<ProductDto>> GetByFilterProductName(string productName);
         Result<double> DepartmentsWithTheMostOrders();
         Result<double> MostOfferedByMonth(string month);

@@ -58,7 +58,13 @@ namespace GokalpStock.API.Controllers.Product
             return Ok(result);
         }
         [HttpGet("GetByFilterProductName")]
-        public ActionResult<Result<ProductDto>> GetByFilterProductName(string productName)
+        public ActionResult<Result<List<ProductDto>>> GetByFilterProductName(string productName)
+        {
+            var result = _homeService.GetByFilterProductName(productName);
+            return Ok(result);
+        }
+        [HttpGet("GetInAMonthByFilterProductName")]
+        public ActionResult<Result<List<ProductDto>>> GetInAMonthByFilterProductName(string productName, string month)
         {
             var result = _homeService.GetByFilterProductName(productName);
             return Ok(result);

@@ -3,6 +3,7 @@ using GokalpStock.Application.Concrete.Models.Dtos;
 using GokalpStock.Application.Concrete.Models.RequestModels.Accounts;
 using GokalpStock.Application.Concrete.Models.RequestModels.Products;
 using GokalpStock.Application.Concrete.Wrapper;
+using System.Globalization;
 
 namespace GokalpStock.Application.Concrete.Service
 {
@@ -180,9 +181,17 @@ namespace GokalpStock.Application.Concrete.Service
 
         }
 
-        public Result<ProductDto> GetInAMonthByFilterProductName(string productName, string month)
+        public Result<List<ProductDto>> GetInAMonthByFilterProductName(string productName, string month)
         {
-            throw new NotImplementedException();
+            var list = new Result<List<ProductDto>>();
+            var entities = ProductService.GetAllProduct();
+            var dt = DateTime.ParseExact(month, "MMMM", CultureInfo.CurrentCulture).Month;
+            var filteredEntities = entities.Result.Data.Select(x => x).Where(x => x.CreateDate.Month == dt).ToList();
+            if (filteredEntities != null)
+            {
+                list.Data = filteredEntities;
+            }
+            return list;
         }
 
         public Result<List<ProductDto>> GetByFilterProductName(string productName)

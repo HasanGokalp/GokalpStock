@@ -11,5 +11,6 @@
         public string ProductName { get; set; }
         public int Price { get; set; }
         public int InStock { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }
