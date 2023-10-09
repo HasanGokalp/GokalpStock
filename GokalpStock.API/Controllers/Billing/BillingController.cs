@@ -39,6 +39,12 @@ namespace GokalpStock.API.Controllers.Billing
             var result = _homeService.BillingService.UpdateBilling(updateBillingRM);
             return Ok(result);
         }
+        [HttpGet("MostOfferedByMonth")]
+        public ActionResult<Result<ProductDto>> MostOfferedByMonth(string month)
+        {
+            var result = _homeService.MostOfferedByMonth(month);
+            return Ok(result);
+        }
 
     }
 }
