@@ -259,10 +259,46 @@ namespace GokalpStock.Application.Concrete.Service
         {
             throw new NotImplementedException();
         }
+        //Aylık üretkenlik
 
-        public Result<double> UtilizationRateFormula()
+        public Result<double> UtilizationRateFormula(string name)
         {
-            throw new NotImplementedException();
+            // FORMULA : Total Billiable Hours / Total Hours Available
+            //var beginHour = 20;
+            //var duration = 10;
+            var todayDate = DateTime.Now;
+            var result = new Result<double>();
+            //var endHour = DateTime.Today.AddHours(beginHour + duration).Hour;
+            ////var results = dates.Where(x => beginHour < endHour
+            ////                  ? (beginHour <= x.Hour && x.Hour <= endHour)
+            ////                  : (beginHour <= x.Hour || x.Hour <= endHour));
+            //var entities = AccountService.GetAll();
+            //var filteredEntities = entities.Result.Data.Select(x => x).Where(x => x.Name == name).ToArray();
+            //var billiableHours = filteredEntities.Select(x => x.Billings.Select(x => x.CreateDate).Where(x => beginHour < endHour
+            //                                                                  ? (beginHour <= x.Hour && x.Hour <= endHour)
+            //                                                                  : (beginHour <= x.Hour || x.Hour <=endHour)));
+
+            //var totalAvailableHours = filteredEntities.Where(x => beginHour < endHour
+            //                                                                  ? (beginHour <= x.CreateDate.Hour && x.CreateDate.Hour <= endHour)
+            //                                                                  : (beginHour <= x.CreateDate.Hour || x.CreateDate.Hour <= endHour));
+            var entities = AccountService.GetAll();
+            var filteredByName = entities.Result.Data.Where(x => x.Name.Trim().ToLower() == name.Trim().ToLower()).Select(x => x.CreateDate).Single();
+            var dt = todayDate - filteredByName;
+            var ht = dt.TotalHours;
+            var dtt = dt.TotalHours - 320;
+            
+            //Buraya log bağlanıp hesaplanacak
+            var utilizitaionFormula = dtt / ht;
+
+            if (utilizitaionFormula > 0)
+            {
+                result.Data = utilizitaionFormula;
+            }
+            else
+            {
+                result.Data = 0;
+            }
+            return result;
         }
 
         public Result<double> CapacityUtilizationRate()
@@ -282,12 +318,37 @@ namespace GokalpStock.Application.Concrete.Service
 
         public Result<double> ProductsPriceMean()
         {
-            throw new NotImplementedException();
+            var list = new Result<double>();
+            var entities = ProductService.GetAllProduct();
+            var filteredEntities = entities.Result.Data.Select(x => x.Price).ToList();
+            var mean = filteredEntities.Sum() / filteredEntities.Count;
+            if (mean > 0 && mean != 0)
+            {
+                list.Data = mean;
+            }
+            else
+            {
+                list.Data = 0;
+            }
+            return list;
         }
 
         public Result<double> BillingPriceMean()
         {
-            throw new NotImplementedException();
+            var list = new Result<double>();
+            var entities = BillingService.GetAllBilling();
+            var filteredEntities = entities.Result.Data.Select(x => x.Product.Price).ToList();
+            var mean = filteredEntities.Sum() / filteredEntities.Count;
+            if (mean > 0 && mean != 0)
+            {
+                list.Data = mean;
+            }
+            else
+            {
+                list.Data = 0;
+            }
+            return list;
+
         }
 
         public Result<double> MeanDemandBillings()

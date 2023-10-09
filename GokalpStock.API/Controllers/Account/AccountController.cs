@@ -46,5 +46,11 @@ namespace GokalpStock.API.Controllers.Account
             var result = _homeService.AccountService.DeleteAccount(deleteAccountRM);
             return Ok(result);
         }
+        [HttpGet("UtilizationRateFormula")]
+        public ActionResult<Result<double>> UtilizationRateFormula(string name)
+        {
+            var result = _homeService.UtilizationRateFormula(name);
+            return Ok(result);
+        }
     }
 }

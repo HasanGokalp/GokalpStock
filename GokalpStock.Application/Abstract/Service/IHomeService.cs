@@ -77,7 +77,7 @@ namespace GokalpStock.Application.Abstract.Service
         #region Yöneticiler için genel istatistikler
         //Utilization Rate Formula
         //Basit şekilde sistemi kullanma oranı
-        Result<double> UtilizationRateFormula();
+        Result<double> UtilizationRateFormula(string name);
         Result<double> CapacityUtilizationRate();
         Result<double> ABCAnalyze();
         Result<double> TargetUtilization();

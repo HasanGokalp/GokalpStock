@@ -45,6 +45,12 @@ namespace GokalpStock.API.Controllers.Billing
             var result = _homeService.MostOfferedByMonth(month);
             return Ok(result);
         }
+        [HttpGet("BillingPriceMean")]
+        public ActionResult<Result<double>> BillingPriceMean()
+        {
+            var result = _homeService.BillingPriceMean();
+            return Ok(result);
+        }
 
     }
 }

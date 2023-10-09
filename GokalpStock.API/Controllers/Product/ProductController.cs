@@ -69,5 +69,11 @@ namespace GokalpStock.API.Controllers.Product
             var result = _homeService.GetByFilterProductName(productName);
             return Ok(result);
         }
+        [HttpGet("ProductsPriceMean")]
+        public ActionResult<Result<double>> ProductsPriceMean()
+        {
+            var result = _homeService.ProductsPriceMean();
+            return Ok(result);
+        }
     }
 }

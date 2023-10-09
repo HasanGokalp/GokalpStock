@@ -13,5 +13,6 @@
         public AuthorityDto Authority { get; set; }
         public IEnumerable<BillingDto>? Billings { get; set; }
         public IEnumerable<ProductDto>? Products { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }
