@@ -22,7 +22,7 @@ namespace GokalpStock.Application.Concrete.Service
             ProductService = productService;
             BillingService = billingService;
         }
-
+        #region CRUD
         public Task<Result<bool>> CreateAccount(CreateAccountRM createAccountRM)
         {
             throw new NotImplementedException();
@@ -82,7 +82,9 @@ namespace GokalpStock.Application.Concrete.Service
         {
             throw new NotImplementedException();
         }
+        #endregion
 
+        #region DİSPOSE
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -111,6 +113,7 @@ namespace GokalpStock.Application.Concrete.Service
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+        #endregion
 
         public Result<double> GetByFilterPopularity(string primary, string secondry)
         {
@@ -175,6 +178,104 @@ namespace GokalpStock.Application.Concrete.Service
             }
             return result;
 
+        }
+
+        public Result<ProductDto> GetInAMonthByFilterProductName(string productName, string month)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<List<ProductDto>> GetByFilterProductName(string productName)
+        {
+            var list = new Result<List<ProductDto>>();
+            var entity = ProductService.GetAllProduct();
+            var searchedEntity = entity.Result.Data.Select(x => x).Where(x => x.ProductName.Contains(productName)).ToList();
+            if (searchedEntity != null)
+            {
+                list.Data = searchedEntity;
+            }
+            return list;
+           
+        }
+
+        public Result<double> MostOfferedByMonth(string month)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> ExponentialSmoothing(double smoothingFactorOfData)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> LinearRegression()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> MostRejectedProducts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> MeanTotalProcessingTime()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> AverageTotalProcessingTimeByProducts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> AverageTotalProcessingTimeInAMonthByProducts(string month, string productName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> TotalProcessingTimeBySpesificProducts(string productName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> AverageTotalProcessingTimeBySpesificProducts(string productName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> UtilizationRateFormula()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> CapacityUtilizationRate()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> ABCAnalyze()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> TargetUtilization()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> ProductsPriceMean()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> BillingPriceMean()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Result<double> MeanDemandBillings()
+        {
+            throw new NotImplementedException();
         }
     }
 }

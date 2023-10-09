@@ -2,6 +2,8 @@
 using GokalpStock.Application.Concrete.Models.RequestModels.Accounts;
 using GokalpStock.Application.Concrete.Models.RequestModels.Products;
 using GokalpStock.Application.Concrete.Wrapper;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Numerics;
 
 namespace GokalpStock.Application.Abstract.Service
 {
@@ -40,8 +42,19 @@ namespace GokalpStock.Application.Abstract.Service
 
         #region Ürünler hakkında arama,filtreleme ve istatistik bilgileri
         Result<double> GetByFilterPopularity(string primary, string secondry);
+        Result<ProductDto> GetInAMonthByFilterProductName(string productName, string month);
+        Result<List<ProductDto>> GetByFilterProductName(string productName);
         Result<double> DepartmentsWithTheMostOrders();
+        Result<double> MostOfferedByMonth(string month);
+        
 
+
+        #endregion
+
+        #region Talep tahmini
+
+        Result<double> ExponentialSmoothing(double smoothingFactorOfData);
+        Result<double> LinearRegression();
         #endregion
 
         #region Maliyet için matematiksel formüller
@@ -51,12 +64,39 @@ namespace GokalpStock.Application.Abstract.Service
         #region Aşamalar için istatistik
 
         Result<double> MostAcceptedProducts();
+        Result<double> MostRejectedProducts();
+        Result<double> MeanTotalProcessingTime();
+        Result<double> AverageTotalProcessingTimeByProducts();
+        Result<double> AverageTotalProcessingTimeInAMonthByProducts(string month, string productName);
+        Result<double> TotalProcessingTimeBySpesificProducts(string productName);
+        Result<double> AverageTotalProcessingTimeBySpesificProducts(string productName);
+
 
         #endregion
 
         #region Yöneticiler için genel istatistikler
+        //Utilization Rate Formula
+        //Basit şekilde sistemi kullanma oranı
+        Result<double> UtilizationRateFormula();
+        Result<double> CapacityUtilizationRate();
+        Result<double> ABCAnalyze();
+        Result<double> TargetUtilization();
 
 
+        #endregion
+        //Talep tahmini içinde kullanılan en basit yöntemler
+        #region Ortalamalar yöntemi 
+
+        #region Fiyata göre
+        Result<double> ProductsPriceMean();
+        Result<double> BillingPriceMean();
+        #endregion
+
+        #region Talep e göre
+        Result<double> MeanDemandBillings();
+
+
+        #endregion
         #endregion
     }
 }

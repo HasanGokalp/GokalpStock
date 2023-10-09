@@ -57,5 +57,11 @@ namespace GokalpStock.API.Controllers.Product
             var result = _homeService.MostAcceptedProducts();
             return Ok(result);
         }
+        [HttpGet("GetByFilterProductName")]
+        public ActionResult<Result<ProductDto>> GetByFilterProductName(string productName)
+        {
+            var result = _homeService.GetByFilterProductName(productName);
+            return Ok(result);
+        }
     }
 }
