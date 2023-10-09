@@ -51,6 +51,11 @@ namespace GokalpStock.API.Controllers.Billing
             var result = _homeService.BillingPriceMean();
             return Ok(result);
         }
-
+        [HttpGet("ExponentialSmoothing")]
+        public ActionResult<Result<double>> ExponentialSmoothing(double smoothingFactorOfData, int counter, int D, int F)
+        {
+            var result = _homeService.ExponentialSmoothing(smoothingFactorOfData, counter, D, F);
+            return Ok(result);
+        }
     }
 }

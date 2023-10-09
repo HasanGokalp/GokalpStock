@@ -220,9 +220,26 @@ namespace GokalpStock.Application.Concrete.Service
             return list;
         }
 
-        public Result<double> ExponentialSmoothing(double smoothingFactorOfData)
+        public Result<double> ExponentialSmoothing(double smoothingFactorOfData, int counter, int D, int F)
         {
-            throw new NotImplementedException();
+            var result = new Result<double>();
+            double formula;
+            for ( var i = 0; i <= counter; i++ )
+            {
+               formula = smoothingFactorOfData * D + 1 - smoothingFactorOfData * F;
+                if(i == counter && formula != 0)
+                {
+                    result.Data = formula;
+                }
+                else
+                {
+                    result.Data = 0;
+                }
+            }
+            
+            return result;
+           
+
         }
 
         public Result<double> LinearRegression()
