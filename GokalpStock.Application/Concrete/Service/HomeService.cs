@@ -220,24 +220,19 @@ namespace GokalpStock.Application.Concrete.Service
             return list;
         }
 
-        public Result<double> ExponentialSmoothing(double smoothingFactorOfData, int counter, int D, int F)
+        public double ExponentialSmoothing(double smoothingFactorOfData, int counter, int D, int F)
         {
-            var result = new Result<double>();
-            double formula;
-            for ( var i = 0; i <= counter; i++ )
+     
+            double formula = smoothingFactorOfData * D +( 1 - smoothingFactorOfData) * F;
+            if (counter == 0)
             {
-               formula = smoothingFactorOfData * D + 1 - smoothingFactorOfData * F;
-                if(i == counter && formula != 0)
-                {
-                    result.Data = formula;
-                }
-                else
-                {
-                    result.Data = 0;
-                }
+                return 1;
             }
-            
-            return result;
+            else
+            {
+                ExponentialSmoothing(smoothingFactorOfData , --counter, D, F);
+            }
+            return formula;
            
 
         }

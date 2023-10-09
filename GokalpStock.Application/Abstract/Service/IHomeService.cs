@@ -53,7 +53,7 @@ namespace GokalpStock.Application.Abstract.Service
 
         #region Talep tahmini
 
-        Result<double> ExponentialSmoothing(double smoothingFactorOfData, int counter, int D, int F);
+        double ExponentialSmoothing(double smoothingFactorOfData, int counter, int D, int F);
         Result<double> LinearRegression();
         #endregion
 
