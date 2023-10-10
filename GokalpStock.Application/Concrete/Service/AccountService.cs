@@ -83,6 +83,23 @@ namespace GokalpStock.Application.Concrete.Service
             return result;
         }
 
+        public Result<AccountDto> LastCreatedAccount()
+        {
+            var result = new Result<AccountDto>();
+            var entities = _unitWork.AccountRepository.GetAll();
+            var mapper = _mapper.Map<IEnumerable<AccountDto>>(entities);
+            var filteredMappingEntity = mapper.SkipWhile(x => x.CreateDate <= DateTime.Now).OrderByDescending(x => x.CreateDate).SingleOrDefault();
+            if (filteredMappingEntity != null)
+            {
+                result.Data = filteredMappingEntity;
+            }
+            else
+            {
+                result.Succsess = false;
+            }
+            return result;
+        }
+
         public Task<Result<AccountDto>> Login(LoginAccountRM loginAccount)
         {
             var result = new Result<AccountDto>();
@@ -127,5 +144,6 @@ namespace GokalpStock.Application.Concrete.Service
             else { result.Succsess = false; throw new Exception("Bu isimde bir Kullanıcı bulunamadı"); }
             return result;
         }
+
     }
 }

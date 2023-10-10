@@ -14,5 +14,6 @@ namespace GokalpStock.Application.Abstract.Service
         Task<Result<AccountDto>> GetById(int id);
         Task<Result<AccountDto>> Login(LoginAccountRM loginAccount);
         Task<Result<List<BillingDto>>> GetByFilter(Expression<Func<AccountDto>> filter = null);
+        Result<AccountDto> LastCreatedAccount();
     }
 }

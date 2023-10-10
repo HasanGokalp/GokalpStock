@@ -52,5 +52,11 @@ namespace GokalpStock.API.Controllers.Account
             var result = _homeService.UtilizationRateFormula(name);
             return Ok(result);
         }
+        [HttpGet("LastCreatedAccount")]
+        public ActionResult<Result<AccountDto>> LastCreatedAccount()
+        {
+            var entities = _homeService.AccountService.LastCreatedAccount();
+            return Ok(entities);
+        }
     }
 }
