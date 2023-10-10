@@ -75,5 +75,11 @@ namespace GokalpStock.API.Controllers.Product
             var result = _homeService.ProductsPriceMean();
             return Ok(result);
         }
+        [HttpGet("ABCAnalyze")]
+        public ActionResult<Result<List<List<ProductDto>>>> ABCAnalyze()
+        {
+            var result = _homeService.ABCAnalyze();
+            return Ok(result);
+        }
     }
 }

@@ -64,7 +64,7 @@ namespace GokalpStock.Application.Abstract.Service
         #region Aşamalar için istatistik
 
         Result<double> MostAcceptedProducts();
-        Result<double> MostRejectedProducts();
+        Result<ProductDto> MostRejectedProducts();
         Result<double> MeanTotalProcessingTime();
         Result<double> AverageTotalProcessingTimeByProducts();
         Result<double> AverageTotalProcessingTimeInAMonthByProducts(string month, string productName);
@@ -79,7 +79,7 @@ namespace GokalpStock.Application.Abstract.Service
         //Basit şekilde sistemi kullanma oranı
         Result<double> UtilizationRateFormula(string name);
         Result<double> CapacityUtilizationRate();
-        Result<double> ABCAnalyze();
+        Result<Dictionary<string, List<ProductDto>>> ABCAnalyze();
         Result<double> TargetUtilization();
 
 

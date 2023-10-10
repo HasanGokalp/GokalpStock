@@ -242,8 +242,10 @@ namespace GokalpStock.Application.Concrete.Service
             throw new NotImplementedException();
         }
 
-        public Result<double> MostRejectedProducts()
+        public Result<ProductDto> MostRejectedProducts()
         {
+            var result = new Result<double>();
+            var entities = ProductService.GetAllProduct();
             throw new NotImplementedException();
         }
 
@@ -317,10 +319,36 @@ namespace GokalpStock.Application.Concrete.Service
         {
             throw new NotImplementedException();
         }
-
-        public Result<double> ABCAnalyze()
+        //Klasik Stok yönetimi için ABC analizi
+        //Yüzdelik dağılımları A : %70, B : %20-25, C : %10-5
+        public Result<Dictionary<string, List<ProductDto>>> ABCAnalyze()
         {
-            throw new NotImplementedException();
+            var result = new Result<Dictionary<string, List<ProductDto>>>();
+            var entities = ProductService.GetAllProduct();
+            var sortedEntities = entities.Result.Data.Select(x => x).OrderByDescending(x => x.Price).ToList();
+            var totalValue = sortedEntities.Sum(x => x.Price);
+            //Kümülatif
+            var categoryA = totalValue * 0.7m;
+            var categoryB = totalValue * 0.9m;
+
+            var aProducts = sortedEntities.TakeWhile(x => x.Price >= categoryA).ToList();
+
+            var bProducts = sortedEntities.SkipWhile(x => x.Price >= categoryA).TakeWhile(x =>x.Price >= categoryB).ToList();
+
+            var cProducts = sortedEntities.SkipWhile(x => x.Price >= categoryB).ToList();
+
+            if (aProducts != null && bProducts != null)
+            {
+                result.Data.Add("A Kategorisi", aProducts);
+                result.Data.Add("B Kategorisi", bProducts);
+                result.Data.Add("C Kategorisi", cProducts);
+
+            }
+            else
+            {
+                throw new Exception("Kategorileri oluştururacak kadar ürün yoktur");
+            }
+            return result;
         }
 
         public Result<double> TargetUtilization()
