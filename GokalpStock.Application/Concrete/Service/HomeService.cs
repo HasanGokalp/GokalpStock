@@ -3,6 +3,9 @@ using GokalpStock.Application.Concrete.Models.Dtos;
 using GokalpStock.Application.Concrete.Models.RequestModels.Accounts;
 using GokalpStock.Application.Concrete.Models.RequestModels.Products;
 using GokalpStock.Application.Concrete.Wrapper;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Query.Internal;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace GokalpStock.Application.Concrete.Service
@@ -424,7 +427,21 @@ namespace GokalpStock.Application.Concrete.Service
 
         public Result<double> MeanDemandBillings()
         {
-            throw new NotImplementedException();
+            var result = new Result<double>();
+            var entities = BillingService.GetAllBilling();
+            var filteredEntities = entities.Result.Data.SkipWhile(x => x.CreateDate <= DateTime.Now).Where(x => x.Status == StatusStrDto.Biten).Select(x => x.CreateDate).ToList();
+            var filteredAllEntities = entities.Result.Data.Count();
+            var filteredTotalEntities = entities.Result.Data.Select(x => x).Count();
+            var mean = filteredTotalEntities / filteredAllEntities;
+            if (mean > 0 && mean != 0)
+            {
+                result.Data = mean;
+            }
+            else
+            {
+                result.Data = 0;
+            }
+            return result;
         }
     }
 }

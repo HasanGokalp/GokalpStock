@@ -69,5 +69,11 @@ namespace GokalpStock.API.Controllers.Billing
             var result = _homeService.AverageTotalProcessingTimeInAMonthByProducts(month, productName);
             return Ok(result);
         }
+        [HttpGet("MeanDemandBillings")]
+        public ActionResult<Result<double>> MeanDemandBillings()
+        {
+            var result = _homeService.MeanDemandBillings();
+            return Ok(result);
+        }
     }
 }
