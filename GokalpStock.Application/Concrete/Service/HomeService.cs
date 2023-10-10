@@ -3,9 +3,6 @@ using GokalpStock.Application.Concrete.Models.Dtos;
 using GokalpStock.Application.Concrete.Models.RequestModels.Accounts;
 using GokalpStock.Application.Concrete.Models.RequestModels.Products;
 using GokalpStock.Application.Concrete.Wrapper;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using System.Collections.Generic;
 using System.Globalization;
 
 namespace GokalpStock.Application.Concrete.Service
