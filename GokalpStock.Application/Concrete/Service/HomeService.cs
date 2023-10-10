@@ -271,12 +271,27 @@ namespace GokalpStock.Application.Concrete.Service
 
         public Result<double> AverageTotalProcessingTimeByProducts()
         {
-            throw new NotImplementedException();
+            throw new Exception();
         }
 
         public Result<double> AverageTotalProcessingTimeInAMonthByProducts(string month, string productName)
         {
-            throw new NotImplementedException();
+            var list = new Result<double>();
+            var dt = DateTime.ParseExact(month, "MMMM", CultureInfo.CurrentCulture).Month;
+            var entities = BillingService.GetAllBilling();
+            var filteredEntities = entities.Result.Data.Where(x => x.Product.ProductName == productName).Select(x => x.CreateDate).SkipWhile(x => x.Month <= dt).ToList();
+            var sum = filteredEntities.Select(x =>x.Month).Sum();
+            var monthCount = filteredEntities.Count;
+            var mean = sum/monthCount;
+            if (mean != 0)
+            {
+                list.Data = mean;
+            }
+            else
+            {
+                list.Data = 0;
+            }
+            return list;
         }
 
         public Result<double> TotalProcessingTimeBySpesificProducts(string productName)
