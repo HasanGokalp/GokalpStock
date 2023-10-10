@@ -251,7 +251,22 @@ namespace GokalpStock.Application.Concrete.Service
 
         public Result<double> MeanTotalProcessingTime()
         {
-            throw new NotImplementedException();
+            var result = new Result<double>();
+            var entities = BillingService.GetAllBilling();
+            var filteredEntities = entities.Result.Data.Select(x => x.CreateDate).SkipWhile(x => x.Date <= DateTime.Now).ToList();
+            var daysSum = filteredEntities.Select(x => x.Hour).Sum();
+            var days= filteredEntities.Count;
+            var mean = daysSum/days;
+            if (mean != 0)
+            {
+                result.Data = mean;
+            }
+            else
+            {
+                result.Data = 0;
+            }
+            return result;
+
         }
 
         public Result<double> AverageTotalProcessingTimeByProducts()
@@ -336,7 +351,7 @@ namespace GokalpStock.Application.Concrete.Service
             var bProducts = sortedEntities.SkipWhile(x => x.Price >= categoryA).TakeWhile(x =>x.Price >= categoryB).ToList();
 
             var cProducts = sortedEntities.SkipWhile(x => x.Price >= categoryB).ToList();
-            var set = aProducts.Union(bProducts);
+            var set = aProducts.Union(bProducts).ToList();
 
             if (aProducts != null && bProducts != null)
             {

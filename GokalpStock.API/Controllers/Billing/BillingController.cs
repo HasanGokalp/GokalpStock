@@ -57,5 +57,11 @@ namespace GokalpStock.API.Controllers.Billing
             var result = _homeService.ExponentialSmoothing(smoothingFactorOfData, counter, D, F);
             return Ok(result);
         }
+        [HttpGet("MeanTotalProcessingTime")]
+        public ActionResult<Result<double>> MeanTotalProcessingTime()
+        {
+            var result = _homeService.MeanTotalProcessingTime();
+            return Ok(result);
+        }
     }
 }
