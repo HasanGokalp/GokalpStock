@@ -79,7 +79,7 @@ namespace GokalpStock.Application.Abstract.Service
         //Basit şekilde sistemi kullanma oranı
         Result<double> UtilizationRateFormula(string name);
         Result<double> CapacityUtilizationRate();
-        Result<Dictionary<string, List<ProductDto>>> ABCAnalyze();
+        Result<List<ProductDto>> ABCAnalyze();
         Result<double> TargetUtilization();
 
 

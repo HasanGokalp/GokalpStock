@@ -76,7 +76,7 @@ namespace GokalpStock.API.Controllers.Product
             return Ok(result);
         }
         [HttpGet("ABCAnalyze")]
-        public ActionResult<Result<List<List<ProductDto>>>> ABCAnalyze()
+        public ActionResult<Result<List<ProductDto>>> ABCAnalyze()
         {
             var result = _homeService.ABCAnalyze();
             return Ok(result);
